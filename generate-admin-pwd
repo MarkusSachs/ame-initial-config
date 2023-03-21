@@ -5,6 +5,10 @@
 pwd_cbladmin=$(echo $RANDOM | md5sum | head -c 20)
 pwd_biadmin=$(echo $RANDOM | md5sum | head -c 20)
 
+clear
+echo
+echo
+
 echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 echo neues Passwort für KeePass  cbladmin: $pwd_cbladmin
 echo neues Passwort für KeePass  biadmin:  $pwd_biadmin
