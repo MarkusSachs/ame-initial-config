@@ -1,22 +1,6 @@
 - hosts: localhost
   connection: local
   become: true
-  vars_prompt:
-  - name: "hostname_fqdn"
-    prompt: "Full Qualified Hostname: "
-    private: no
-  - name: "IP_Address"
-    prompt: "IP Adresse(x.x.x.x/24): "
-    private: no
-  - name: "IP_Gateway"
-    prompt: "Gateway-IP: "
-    private: no
-  - name: "IP_DNS_1"
-    prompt: "DNS-Server-IP: "
-    private: no
-  - name: "NTPServer"
-    prompt: "NTP Server-IP: "
-    private: no
 
   vars:
     hostname_name: "{{hostname_fqdn.split('.').0}}"
