@@ -5,8 +5,10 @@
 pwd_cbladmin=$(echo $RANDOM | md5sum | head -c 20)
 pwd_biadmin=$(echo $RANDOM | md5sum | head -c 20)
 
-echo neues Passwort cbladmin: $pwd_cbladmin
-echo neues Passwort biadmin: $pwd_biadmin
+echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+echo neues Passwort für KeePass cbladmin: $pwd_cbladmin
+echo neues Passwort für KeePassbiadmin: $pwd_biadmin
+echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 sudo chpasswd <<<"cbladmin:$pwd_cbladmin"
 sudo chpasswd <<<"biadmin:$pwd_biadmin"
