@@ -1,0 +1,40 @@
+- hosts: all
+  vars_prompt:
+  - name: "hostname_fqdn"
+    prompt: "Full Qualified Hostname: "
+    private: no
+  - name: "IP_Address"
+    prompt: "IP Adresse(x.x.x.x/24): "
+    private: no
+  - name: "IP_Gateway"
+    prompt: "Gateway-IP: "
+    private: no
+  - name: "IP_DNS_1"
+    prompt: "DNS-Server-IP: "
+    private: no
+  - name: "NTPServer"
+    prompt: "NTP Server-IP: "
+    private: no
+
+  vars:
+    hostname_name: "{{hostname_fqdn.split('.').0}}"
+    domain_name: "{{hostname_fqdn.split('.').1}}"
+    toplevel_domain: "{{hostname_fqdn.split('.').2}}"
+
+  tasks:
+  - name: Setze Hostname
+    ansible.builtin.hostname: name={{ hostname_name }}
+    when: hostname_name is defined
+
+  - name: Update /etc/hosts
+    ansible.builtin.lineinfile: dest=/etc/hosts regexp="^127\.0\.1\.1" line="127.0.1.1{{'\t'}}{% if hostname_name != hostname_fqdn %}{{ hostname_fqdn }}{{'\t'}}{% endif %}{{ hostname_name }}" state=present
+
+  - name: Setzte IP-Adresse
+    ansible.builtin.template: src=../templates/eth0.network.j2 dest=/etc/netplan/00-installer-config.yaml
+
+  - name: Netplan anwenden
+    ansible.builtin.command: netplan apply
+    become: true
+
+  - name: Setze NTP Server
+    ansible.builtin.template: src=../templates/timesync.conf.j2 dest=/etc/systemd/timesyncd.conf
