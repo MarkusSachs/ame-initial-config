@@ -2,8 +2,8 @@
 
 #Generieren Passwörter für CBL/BI-Admin User
 
-pwd_cbladmin = $(echo $RANDOM | md5sum | head -c 20)
-pwd_biadmin = $(echo $RANDOM | md5sum | head -c 20)
+pwd_cbladmin=$(echo $RANDOM | md5sum | head -c 20)
+pwd_biadmin=$(echo $RANDOM | md5sum | head -c 20)
 
 echo $pwd_cbladmin
 echo $pwd_biadmin
