@@ -19,5 +19,5 @@ echo
 read -p"Alles erledigt VM rebooten? (j/n)? " response
 
     if [ "$response" == "j" ]; then
-        reboot
+        sudo reboot
     fi
