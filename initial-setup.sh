@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo
+echo
 echo Grundkonfig Oddo Appliance
 echo
 echo
