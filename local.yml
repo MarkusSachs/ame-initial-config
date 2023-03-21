@@ -36,7 +36,6 @@
 
   - name: Netplan anwenden
     ansible.builtin.command: netplan apply
-    become: true
 
   - name: Setze NTP Server
     ansible.builtin.template: src=../templates/timesync.conf.j2 dest=/etc/systemd/timesyncd.conf
